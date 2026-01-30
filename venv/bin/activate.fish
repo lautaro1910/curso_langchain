@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /home/lauta/Desktop/develop/learning/curso_langchain/venv
+set -gx VIRTUAL_ENV /home/lautaro/Desktop/develop/curso_langchain/venv
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH
