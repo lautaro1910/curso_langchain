@@ -4,14 +4,14 @@ from prompts.cv_prompts import crear_sistema_prompts
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
 import google.api_core.exceptions
 
-def crear_evaluador():
+def crear_evaluador(profile_type: str = "it"):
     modelo_base = ChatGoogleGenerativeAI(
         model="gemini-2.5-flash", 
         temperature=0.2
     )
 
     modelo_estructurado = modelo_base.with_structured_output(AnalyzeCV)
-    chat_prompt = crear_sistema_prompts()
+    chat_prompt = crear_sistema_prompts(tipo_perfil=profile_type)
     chain_evaluation = chat_prompt | modelo_estructurado
 
     return chain_evaluation
@@ -27,9 +27,9 @@ def crear_evaluador():
 def ejecutar_con_reintentos(chain, inputs):
     return chain.invoke(inputs)
 
-def evaluar_candidato(cv_text: str, job_description: str) -> AnalyzeCV:
+def evaluar_candidato(cv_text: str, job_description: str, profile_type: str = "it") -> AnalyzeCV:
     try:
-        chain_evaluation = crear_evaluador()
+        chain_evaluation = crear_evaluador(profile_type)
         
         # Usamos la función con reintentos
         result = ejecutar_con_reintentos(chain_evaluation, {

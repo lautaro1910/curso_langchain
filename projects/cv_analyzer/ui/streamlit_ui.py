@@ -35,6 +35,27 @@ def main():
     
     t = TRANSLATIONS[lang_code]
 
+    with st.sidebar:
+        # Profile Selector
+        st.markdown("---")
+        profile_options = {
+            "it": t["opt_it"],
+            "marketing": t["opt_marketing"]
+        }
+        
+        # Reverse mapping for display
+        display_options = list(profile_options.values())
+        
+        selected_display = st.selectbox(
+            t["lbl_profile_type"],
+            options=display_options,
+            index=0
+        )
+        
+        # Get key from value
+        selected_profile = next(key for key, value in profile_options.items() if value == selected_display)
+        st.session_state['profile_type'] = selected_profile
+
     # Main Layout
     st.title(t["main_title"])
     st.markdown(t["description"])
@@ -139,7 +160,8 @@ def procesar_analisis(archivo_cv, descripcion_puesto, t, lang_code):
         # time.sleep(0.5) 
         
         st.write(t["step_analyze"])
-        resultado = evaluar_candidato(texto_cv, descripcion_puesto)
+        profile_type = st.session_state.get('profile_type', 'it')
+        resultado = evaluar_candidato(texto_cv, descripcion_puesto, profile_type)
         
         status_container.update(label=t["step_done"], state="complete", expanded=False)
         

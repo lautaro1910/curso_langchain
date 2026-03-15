@@ -10,7 +10,7 @@ def extract_text_from_pdf(pdf_file):
             page_text = page.extract_text()
             if page_text.strip():
                 text += f"\n--- Página {number_page} ---\n{page_text}"
-                text += page_text + "\n"
+
 
         text = text.strip()
         if not text:

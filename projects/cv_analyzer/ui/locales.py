@@ -3,6 +3,9 @@ TRANSLATIONS = {
     "es": {
         "page_title": "Sistema de Evaluación de CVs",
         "main_title": "📄 Sistema de Evaluación de CVs con IA",
+        "lbl_profile_type": "Tipo de Perfil",
+        "opt_it": "Tecnología / IT",
+        "opt_marketing": "Marketing / Creativo",
         "description": """
         **Analiza currículums y evalúa candidatos de manera objetiva usando IA**
         
@@ -102,6 +105,9 @@ TRANSLATIONS = {
     "en": {
         "page_title": "CV Evaluation System",
         "main_title": "📄 AI CV Evaluation System",
+        "lbl_profile_type": "Profile Type",
+        "opt_it": "Technology / IT",
+        "opt_marketing": "Marketing / Creative",
         "description": """
         **Analyze resumes and evaluate candidates objectively using AI**
         

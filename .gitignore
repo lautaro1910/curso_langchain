@@ -24,3 +24,8 @@ pip-delete-this-directory.txt
 # OS
 .DS_Store
 Thumbs.db
+
+# Tema3
+learning_files/Tema3/credentials.json
+learning_files/Tema3/token.json
+
